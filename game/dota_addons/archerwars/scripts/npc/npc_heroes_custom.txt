@@ -1,0 +1,353 @@
+// Dota Heroes File
+// NOTE: This is not for creating new heroes, this is for taking a currently existing hero as a template and overriding
+// the specified key-value combinations.  Use override_hero <hero_to_override> for this.
+"DOTAHeroes"
+{	
+	//=================================================================================================================
+	// HERO: Aassult
+	//=================================================================================================================
+	"npc_dota_hero_assult"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_windrunner"				// Hero to override
+		"Enabled"					"1"
+		"Level"						"1"
+		"HeroUnlockOrder"			"1"										// The higher the number the later these heros will unlock for new players.
+		"ModelScale"				"1.0"
+ 
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"6"
+		"Ability1"					"archer_normal_arrow"					// Ability 1.
+		"Ability2"					"archer_normal_arrow2"					// Ability 2.
+		"Ability3"					"archer_spread_shot"					// Ability 3.
+		"Ability4"					"archer_fade"							// Ability 4.
+		"Ability5"					"archer_locate"							// Ability 5 - Bonuses.
+		"Ability6"					"archer_holy_arrow"						// Ability 6 - Extra.
+		"Ability7"					""										// Ability 7 - Extra.
+		"Ability8"					""										// Ability 8 - Extra.
+ 
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"										// Physical protection.
+		"MagicalResistance"			"0"										// Magical protection (percentage).
+ 
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"										// Damage range min.
+		"AttackDamageMax"			"0"										// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"				// Type of damage dealt. 
+		"AttackRate"				"0"										// Speed of attack.
+		"AttackAnimationPoint"		"00"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"										// Range within a target can be acquired.
+		"AttackRange"				"0"										// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+ 
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"										// Base strength
+		"AttributeStrengthGain"		"2.5"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"										// Base intelligence
+		"AttributeIntelligenceGain"	"0"										// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"										// Base agility
+		"AttributeAgilityGain"		"0"										// Agility bonus per level.
+ 
+		// Bounty
+		//-------------------------------------------------------------------------------------------------------------
+		"BountyXP"					"100"									// Experience earn.
+		"BountyGoldMin"				"200"									// Gold earned min.
+		"BountyGoldMax"				"200"									// Gold earned max.
+ 
+		// Bounds
+		//-------------------------------------------------------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"70"
+ 
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"290"									// Speed.
+		"MovementTurnRate"			"0.45"									// Turning rate.
+		"HasAggressiveStance"		"1"										// Plays alternate idle/run animation when near enemies
+ 
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"480"									// Base health.
+		"StatusHealthRegen"			"5"										// Health regeneration rate.
+		"StatusMana"				"100"									// Base mana.
+		"StatusManaRegen"			"10.0"									// Mana regeneration rate.
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1600"									// Range of vision during day light.
+		"VisionNighttimeRange"		"1200"									// Range of vision at night time.
+		
+		//Inventory
+		"HasInventory"				"1"
+	}
+
+	//=================================================================================================================
+	// HERO: Sniper
+	//=================================================================================================================
+	"npc_dota_hero_sniper"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_mirana"					// Hero to override
+		"Enabled"					"1"
+		"Level"						"1"
+		"HeroUnlockOrder"			"1"										// The higher the number the later these heros will unlock for new players.
+		"ModelScale"				"1.0"
+ 
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"6"
+		"Ability1"					"archer_sniper_arrow"					// Ability 1.
+		"Ability2"					"archer_sniper_arrow2"					// Ability 2.
+		"Ability3"					"archer_summon_hawk"					// Ability 3.
+		"Ability4"					"archer_fade"							// Ability 4.
+		"Ability5"					"archer_locate"							// Ability 5 - Bonuses.
+		"Ability6"					"archer_holy_arrow"						// Ability 6 - Extra.
+		"Ability7"					""										// Ability 7 - Extra.
+		"Ability8"					""										// Ability 8 - Extra.
+ 
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"										// Physical protection.
+		"MagicalResistance"			"0"										// Magical protection (percentage).
+ 
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"										// Damage range min.
+		"AttackDamageMax"			"0"										// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"				// Type of damage dealt. 
+		"AttackRate"				"0"										// Speed of attack.
+		"AttackAnimationPoint"		"00"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"										// Range within a target can be acquired.
+		"AttackRange"				"0"										// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+ 
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"										// Base strength
+		"AttributeStrengthGain"		"2.5"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"										// Base intelligence
+		"AttributeIntelligenceGain"	"0"										// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"										// Base agility
+		"AttributeAgilityGain"		"0"										// Agility bonus per level.
+ 
+		// Bounty
+		//-------------------------------------------------------------------------------------------------------------
+		"BountyXP"					"100"									// Experience earn.
+		"BountyGoldMin"				"200"									// Gold earned min.
+		"BountyGoldMax"				"200"									// Gold earned max.
+ 
+		// Bounds
+		//-------------------------------------------------------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"70"
+ 
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"290"									// Speed.
+		"MovementTurnRate"			"0.45"									// Turning rate.
+		"HasAggressiveStance"		"1"										// Plays alternate idle/run animation when near enemies
+ 
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"480"									// Base health.
+		"StatusHealthRegen"			"5"										// Health regeneration rate.
+		"StatusMana"				"100"									// Base mana.
+		"StatusManaRegen"			"10.0"									// Mana regeneration rate.
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1600"									// Range of vision during day light.
+		"VisionNighttimeRange"		"1200"									// Range of vision at night time.
+		
+		//Inventory
+		"HasInventory"				"1"
+	}
+
+	//=================================================================================================================
+	// HERO: Shadow
+	//=================================================================================================================
+	"npc_dota_hero_shadow"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_drow_ranger"					// Hero to override
+		"Enabled"					"0"
+		"Level"						"1"
+		"HeroUnlockOrder"			"1"										// The higher the number the later these heros will unlock for new players.
+		"ModelScale"				"1.0"
+ 
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"6"
+		"Ability1"					"archer_normal_arrow"					// Ability 1.
+		"Ability2"					"archer_normal_arrow2"					// Ability 2.
+		"Ability3"					"archer_hook"						// Ability 3.
+		"Ability4"					"archer_fade"							// Ability 4.
+		"Ability5"					"archer_locate"							// Ability 5 - Bonuses.
+		"Ability6"					""					// Ability 6 - Extra.
+		"Ability7"					""										// Ability 7 - Extra.
+		"Ability8"					""										// Ability 8 - Extra.
+ 
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"										// Physical protection.
+		"MagicalResistance"			"0"										// Magical protection (percentage).
+ 
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"										// Damage range min.
+		"AttackDamageMax"			"0"										// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"				// Type of damage dealt. 
+		"AttackRate"				"0"										// Speed of attack.
+		"AttackAnimationPoint"		"00"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"										// Range within a target can be acquired.
+		"AttackRange"				"0"										// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+ 
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"										// Base strength
+		"AttributeStrengthGain"		"2.5"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"										// Base intelligence
+		"AttributeIntelligenceGain"	"0"										// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"										// Base agility
+		"AttributeAgilityGain"		"0"										// Agility bonus per level.
+ 
+		// Bounty
+		//-------------------------------------------------------------------------------------------------------------
+		"BountyXP"					"100"									// Experience earn.
+		"BountyGoldMin"				"200"									// Gold earned min.
+		"BountyGoldMax"				"200"									// Gold earned max.
+ 
+		// Bounds
+		//-------------------------------------------------------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"70"
+ 
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"290"									// Speed.
+		"MovementTurnRate"			"0.45"									// Turning rate.
+		"HasAggressiveStance"		"1"										// Plays alternate idle/run animation when near enemies
+ 
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"480"									// Base health.
+		"StatusHealthRegen"			"5"										// Health regeneration rate.
+		"StatusMana"				"100"									// Base mana.
+		"StatusManaRegen"			"10.0"									// Mana regeneration rate.
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1600"									// Range of vision during day light.
+		"VisionNighttimeRange"		"1200"									// Range of vision at night time.
+		
+		//Inventory
+		"HasInventory"				"1"
+	}
+
+	//=================================================================================================================
+	// HERO: Demolitionist
+	//=================================================================================================================
+	"npc_dota_hero_demo"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_clinkz"					// Hero to override
+		"Enabled"					"1"
+		"Level"						"1"
+		"HeroUnlockOrder"			"1"										// The higher the number the later these heros will unlock for new players.
+		"ModelScale"				"0.8"
+ 
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"6"
+		"Ability1"					"archer_explosive_arrow"				// Ability 1.
+		"Ability2"					"archer_explosive_arrow2"				// Ability 2.
+		"Ability3"					"archer_detonate"						// Ability 3.
+		"Ability4"					"archer_fade"							// Ability 4.
+		"Ability5"					"archer_locate"							// Ability 5 - Bonuses.
+		"Ability6"					"archer_holy_arrow"						// Ability 6 - Extra.
+		"Ability7"					""										// Ability 7 - Extra.
+		"Ability8"					""										// Ability 8 - Extra.
+ 
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"										// Physical protection.
+		"MagicalResistance"			"0"										// Magical protection (percentage).
+ 
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"										// Damage range min.
+		"AttackDamageMax"			"0"										// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"				// Type of damage dealt. 
+		"AttackRate"				"0"										// Speed of attack.
+		"AttackAnimationPoint"		"00"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"										// Range within a target can be acquired.
+		"AttackRange"				"0"										// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+ 
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"										// Base strength
+		"AttributeStrengthGain"		"2.5"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"										// Base intelligence
+		"AttributeIntelligenceGain"	"0"										// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"										// Base agility
+		"AttributeAgilityGain"		"0"										// Agility bonus per level.
+ 
+		// Bounty
+		//-------------------------------------------------------------------------------------------------------------
+		"BountyXP"					"100"									// Experience earn.
+		"BountyGoldMin"				"200"									// Gold earned min.
+		"BountyGoldMax"				"200"									// Gold earned max.
+ 
+		// Bounds
+		//-------------------------------------------------------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"70"
+ 
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"290"									// Speed.
+		"MovementTurnRate"			"0.45"									// Turning rate.
+		"HasAggressiveStance"		"1"										// Plays alternate idle/run animation when near enemies
+ 
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"480"									// Base health.
+		"StatusHealthRegen"			"5"										// Health regeneration rate.
+		"StatusMana"				"100"									// Base mana.
+		"StatusManaRegen"			"10.0"									// Mana regeneration rate.
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1600"									// Range of vision during day light.
+		"VisionNighttimeRange"		"1200"									// Range of vision at night time.
+		
+		//Inventory
+		"HasInventory"				"1"
+	}
+}

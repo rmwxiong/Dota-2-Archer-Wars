@@ -1,0 +1,1428 @@
+// Dota Heroes File
+"DOTAAbilities"
+{
+	"Version"		"1"
+	
+	//=================================================================================================================
+	// Dummy stuff
+	//=================================================================================================================
+	"flying_dummy_unit_passive"
+	{
+		"AbilityBehavior" 			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 				"ability_datadriven"
+		"AbilityTextureName"        "rubick_empty1"
+		"MaxLevel"                  "1"
+		
+		"Modifiers"
+		{
+			"dummy_unit"
+			{
+				"Passive"			"1"
+				"States"
+				{
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_FLYING"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+		  }
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Arrow
+	//=================================================================================================================
+	"archer_normal_arrow"
+	{
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle_folder"			"particles/arrow"
+            "soundfile"					"soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"			"windrunner_powershot"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"LevelsBetweenUpgrades"     	"3"
+    	"RequiredLevel"         		"1"
+    	"MaxLevel"						"3"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"9999"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/arrow.lua"
+				"Function"				"normalArrow"
+				"Target"				"POINT"
+				"MoveSpeed"				"%arrow_speed"
+				"FixedDistance"			"%range"
+				"StartRadius"			"%arrow_width"
+				"EndRadius"				"%arrow_width"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Ability.Powershot"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"				"false"
+			"RunScript"
+			{
+				"ScriptFile"        	"scripts/vscripts/Heroes/arrow.lua"
+				"Function"          	"arrowHit"
+				"Target"				"TARGET"
+				"Damage"				"%damage"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Windrunner.PowershotDamage"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"2.5 2.0 1.5"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"arrow_width"			"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"arrow_speed"			"1000.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"200 300 400"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"1500 2000 2500"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Explosive Arrow
+	//=================================================================================================================
+	"archer_explosive_arrow"
+	{
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle_folder"			"particles/arrow"
+            "soundfile"					"soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"			"clinkz_searing_arrows"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"LevelsBetweenUpgrades"     	"3"
+    	"RequiredLevel"         		"1"
+    	"MaxLevel"						"3"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"9999"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/arrow.lua"
+				"Function"				"normalArrow"
+				"Target"				"POINT"
+				"MoveSpeed"				"%arrow_speed"
+				"FixedDistance"			"%range"
+				"StartRadius"			"%arrow_width"
+				"EndRadius"				"%arrow_width"
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/Demolitionist/explosiveArrow.lua"
+				"Function"				"shootExplosiveArrow"
+				"Target"				"POINT"
+				"MoveSpeed"				"%arrow_speed"
+				"FixedDistance"			"%range"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Ability.Powershot"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"				"false"
+			"RunScript"
+			{
+				"ScriptFile"        	"scripts/vscripts/Heroes/arrow.lua"
+				"Function"          	"arrowHit"
+				"Target"				"TARGET"
+				"Damage"				"%damage"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Windrunner.PowershotDamage"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"2.5 2.0 1.5"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"arrow_width"			"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"arrow_speed"			"1000.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"200 300 400"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"1500 2000 2500"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Sniper Arrow
+	//=================================================================================================================
+	"archer_sniper_arrow"
+	{
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle_folder"			"particles/arrow"
+            "soundfile"					"soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"			"mirana_arrow"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"LevelsBetweenUpgrades"     	"3"
+    	"RequiredLevel"         		"1"
+    	"MaxLevel"						"3"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"9999"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/arrow.lua"
+				"Function"				"normalArrow"
+				"Target"				"POINT"
+				"MoveSpeed"				"%arrow_speed"
+				"FixedDistance"			"%range"
+				"StartRadius"			"%arrow_width"
+				"EndRadius"				"%arrow_width"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Ability.Powershot"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"				"false"
+			"RunScript"
+			{
+				"ScriptFile"        	"scripts/vscripts/Heroes/arrow.lua"
+				"Function"          	"arrowHit"
+				"Target"				"TARGET"
+				"Damage"				"%damage"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Windrunner.PowershotDamage"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"2.5 2.0 1.5"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"arrow_width"			"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"arrow_speed"			"1100.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"200 300 400"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"2000 2750 3500"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Spread Shot
+	//=================================================================================================================
+	"archer_spread_shot"
+	{
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle_folder"			"particles/arrow"
+            "soundfile"					"soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"			"medusa_split_shot"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"LevelsBetweenUpgrades"     	"2"
+    	"RequiredLevel"         		"3"
+    	"MaxLevel"						"3"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"9999"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/Assault/splitArrow.lua"
+				"Function"				"splitArrow"
+				"Target"				"POINT"
+				"MoveSpeed"				"%arrow_speed"
+				"FixedDistance"			"%range"
+				"StartRadius"			"%arrow_width"
+				"EndRadius"				"%arrow_width"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Ability.Powershot"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"				"false"
+			"RunScript"
+			{
+				"ScriptFile"        	"scripts/vscripts/Heroes/Assault/splitArrow.lua"
+				"Function"          	"splitHit"
+				"Target"				"TARGET"
+				"Damage"				"%damage"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Windrunner.PowershotDamage"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"15.0 12.5 10.0"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"arrow_width"			"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"arrow_speed"			"1000.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"150 225 300"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"1500 2000 2500"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Fade
+	//=================================================================================================================
+	"archer_fade"
+	{
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_riki"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"bounty_hunter_wind_walk"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+		"AbilityTextureName"			"riki_smoke_screen"
+		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_1"
+		"LevelsBetweenUpgrades"     	"2"
+    	"RequiredLevel"         		"3"
+    	"MaxLevel"						"1"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"			"Hero_BountyHunter.WindWalk"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"15"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"0.75"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"fade_time"					"0.0"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_damage"				"0"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Locate
+	//=================================================================================================================
+	"archer_locate"
+	{
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE = 1"
+		"AbilityTextureName"			"kunkka_x_marks_the_spot"
+		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_1"
+		"MaxLevel"						"1"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/locate.lua"
+				"Function"				"locate"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Beastmaster.Call.Hawk"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.5"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100"
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"sight_radius"			"150"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"sight_duration"		"1.5"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: HOLY_ARROW
+	//=================================================================================================================
+	"archer_holy_arrow"
+	{
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"					"particles/units/heroes/hero_invoker/invoker_chaos_meteor.vpcf"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_tusk.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"			"invoker_chaos_meteor"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"LevelsBetweenUpgrades"     	"6"
+    	"RequiredLevel"         		"6"
+    	"MaxLevel"						"2"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"9999"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"Target"				"POINT"
+				"EffectName"			"particles/units/heroes/hero_invoker/invoker_chaos_meteor.vpcf"
+				"StartPosition"         "attach_attack1"
+				"MoveSpeed"				"%arrow_speed"
+				"FixedDistance"			"%range"
+				"StartRadius"			"%arrow_width"
+				"EndRadius"				"%arrow_width"
+				"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_COURIER"
+				"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NO_INVIS"
+				"HasFrontalCone"		"0"
+				"ProvidesVision"		"1"
+				"VisionRadius"			"400"
+			}
+			
+			"FireSound"
+			{
+				"EffectName"			"Hero_Tusk.WalrusPunch.Damage"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"				"false"
+
+			"Damage"
+      		{
+       			"Type" 					"DAMAGE_TYPE_PHYSICAL"
+       			"Damage" 				"%damage"
+       			"Target" 				"TARGET"
+      		}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Tusk.Snowball.ProjectileHit"
+				"Target"				"TARGET"
+			}
+		}
+
+		"OnProjectileFinish"
+		{
+			"FireSound"
+			{
+				"EffectName"			"Hero_Invoker.ChaosMeteor.Destroy"
+				"Target"				"PROJECTILE"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"60"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"arrow_width"			"150"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"arrow_speed"			"2000.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"750 1250"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"2000 3000"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Detonate
+	//=================================================================================================================
+	"archer_detonate"
+	{
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"					"particles/units/heroes/hero_meepo/meepo_poof_end.vpcf"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_rattletrap.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"			"techies_focused_detonate"
+		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_4"
+		"LevelsBetweenUpgrades"     	"2"
+    	"RequiredLevel"         		"3"
+    	"MaxLevel"						"3"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/Demolitionist/explosiveArrow.lua"
+				"Function"				"explodeArrow"
+				"explosion_particle"	"particles/units/heroes/hero_meepo/meepo_poof_end.vpcf"
+				"explosion_sound"		"Hero_Rattletrap.Rocket_Flare.Explode"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"8"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"150 225 300"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"radius"				"350.0"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Take Aim
+	//=================================================================================================================
+	"archer_take_aim"
+	{
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+            "soundfile"					"soundevents/game_sounds_heroes/game_sounds_sniper.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
+		"AbilityTextureName"			"sniper_take_aim"
+		"AbilityCastAnimation" 			"ACT_DOTA_DISABLED"
+		"LevelsBetweenUpgrades"     	"2"
+    	"RequiredLevel"         		"3"
+    	"MaxLevel"						"3"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"1.5"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_aiming"
+				"Target" 				"CASTER"
+				"Duration"				"-1"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Ability.AssassinateLoad"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.5"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"500 1000 1500"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"500 1000 1500"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Summon Hawk
+	//=================================================================================================================
+	"archer_summon_hawk"
+	{
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+			"particle"					"particles/units/heroes/hero_lone_druid/lone_druid_bear_spawn.vpcf"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
+		"AbilityTextureName"			"beastmaster_call_of_the_wild_hawk"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"LevelsBetweenUpgrades"			"2"
+		"RequiredLevel"					"3"
+		"MaxLevel"						"3"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/Sniper/hawk.lua"
+				"Function"				"summonHawk"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Beastmaster.Call.Hawk"
+				"Target"				"CASTER"
+			}
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/Sniper/hawk.lua"
+				"Function"				"upgradeHawk"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"60"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health"				"300 450 600"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"270 300 330"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"backlash_damage"		"35.0"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_animal_bond"
+			{
+				"IsHidden"		"1"
+	
+				"StatusEffectName"		"particles/status_fx/status_effect_spirit_bear.vpcf"
+				"StatusEffectPriority"	"1"
+	
+				"OnDeath"
+				{
+					"RunScript"
+				    {
+						"ScriptFile"			"scripts/vscripts/Heroes/Sniper/hawk.lua"
+						"Function"				"deathHawk"
+				    }
+				}
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Hook
+	//=================================================================================================================
+	"archer_hook"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"pudge_meat_hook"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+			"particle"			"particles/units/heroes/hero_pudge/pudge_meathook_chain.vpcf"
+			"particle"			"particles/units/heroes/hero_pudge/pudge_meathook_impact.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700 900 1100 1300"
+		"AbilityCastPoint"				"0.4"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"14.0 13.0 12.0 11.0"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"hook_speed"			"1600.0"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"hook_width"		"100"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"hook_distance"		"700 900 1100"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"vision_radius"		"300 300 300"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"vision_duration"	"4.0 4.0 4.0 4.0"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"caster_duration"	"0.3 0.37 0.46"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Pudge.AttackHookExtend"
+				"Target"		"CASTER"
+			}
+	
+			"LinearProjectile"
+			{
+				"Target"      	"POINT"
+			    "EffectName"  	""
+			    "MoveSpeed"   	"%hook_speed"
+			    "StartRadius"   "%hook_width"
+			    "StartPosition" "attach_origin"
+			    "EndRadius"     "%hook_width"
+			    "FixedDistance" "%hook_distance"
+			    "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			    "TargetTypes"   "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+			    "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_NONE"
+			    "HasFrontalCone"    "0"
+			    "ProvidesVision" "0"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_meat_hook_caster_datadriven"
+				"Target"		"CASTER"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_meat_hook_phased_datadriven"
+				"Target"		"CASTER"
+			}
+	
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/Shadow/meat_hook.lua"
+				"Function"				"LaunchMeatHook"
+				"Target"				"POINT"
+				"sound_extend"			"Hero_Pudge.AttackHookExtend"
+				"hook_particle"			"particles/units/heroes/hero_pudge/pudge_meathook_chain.vpcf"
+				"dummy_modifier"		"modifier_meat_hook_dummy_datadriven"
+			}
+		}
+	
+		"OnProjectileHitUnit"
+		{	
+			"DeleteOnHit"	"1"
+	
+			"FireEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_pudge/pudge_meathook_impact.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"		"TARGET"
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Hero_Pudge.AttackHookImpact"
+				"Target"		"TARGET"
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Hero_Pudge.AttackHookRetract"
+				"Target"		"CASTER"
+			}
+			
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/Shadow/meat_hook.lua"
+				"Function"				"RetractMeatHook"
+				"meat_hook_modifier"	"modifier_meat_hook_target_datadriven"
+				"sound_extend"			"Hero_Pudge.AttackHookExtend"
+				"sound_retract"			"Hero_Pudge.AttackHookRetract"
+				"sound_retract_stop"	"Hero_Pudge.AttackHookRetractStop"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_meat_hook_target_datadriven"
+				"Target"		"TARGET"
+			}
+		}
+	
+	
+		"Modifiers"
+		{
+			"modifier_meat_hook_phased_datadriven"
+			{
+				"IsHidden"	"1"	
+				"Duration"	"0.1"
+				"States"
+				{
+					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+	
+			"modifier_meat_hook_caster_datadriven"
+			{
+				"IsHidden"	"1"
+				"Duration"	"%caster_duration"
+	
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+	
+			"modifier_meat_hook_target_datadriven"
+			{
+				"IsDebuff"				"1"
+				"OverrideAnimation"		"ACT_DOTA_FLAIL"
+	
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+	
+			"modifier_meat_hook_dummy_datadriven"
+			{
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE" 	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR" 	"MODIFIER_STATE_VALUE_ENABLED"				"MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE" 	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
+	//==================================================Arrow Copies===================================================
+	//=================================================================================================================
+	// Archer: Arrow2
+	//=================================================================================================================
+	"archer_normal_arrow2"
+	{
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle_folder"			"particles/arrow"
+            "soundfile"					"soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"			"windrunner_powershot"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"LevelsBetweenUpgrades"     	"3"
+    	"RequiredLevel"         		"2"
+    	"MaxLevel"						"3"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"9999"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/arrow.lua"
+				"Function"				"normalArrow"
+				"Target"				"POINT"
+				"MoveSpeed"				"%arrow_speed"
+				"FixedDistance"			"%range"
+				"StartRadius"			"%arrow_width"
+				"EndRadius"				"%arrow_width"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Ability.Powershot"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"				"false"
+			"RunScript"
+			{
+				"ScriptFile"        	"scripts/vscripts/Heroes/arrow.lua"
+				"Function"          	"arrowHit"
+				"Target"				"TARGET"
+				"Damage"				"%damage"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Windrunner.PowershotDamage"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"2.5 2.0 1.5"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"arrow_width"			"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"arrow_speed"			"1000.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"200 300 400"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"1500 2000 2500"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Explosive Arrow2
+	//=================================================================================================================
+	"archer_explosive_arrow2"
+	{
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle_folder"			"particles/arrow"
+            "soundfile"					"soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"			"clinkz_searing_arrows"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"LevelsBetweenUpgrades"     	"3"
+		"RequiredLevel"         		"2"
+		"MaxLevel"						"3"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"9999"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/arrow.lua"
+				"Function"				"normalArrow"
+				"Target"				"POINT"
+				"MoveSpeed"				"%arrow_speed"
+				"FixedDistance"			"%range"
+				"StartRadius"			"%arrow_width"
+				"EndRadius"				"%arrow_width"
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/Demolitionist/explosiveArrow.lua"
+				"Function"				"shootExplosiveArrow"
+				"Target"				"POINT"
+				"MoveSpeed"				"%arrow_speed"
+				"FixedDistance"			"%range"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Ability.Powershot"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"				"false"
+			"RunScript"
+			{
+				"ScriptFile"        	"scripts/vscripts/Heroes/arrow.lua"
+				"Function"          	"arrowHit"
+				"Target"				"TARGET"
+				"Damage"				"%damage"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Windrunner.PowershotDamage"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"2.5 2.0 1.5"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"arrow_width"			"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"arrow_speed"			"1000.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"200 300 400"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"1500 2000 2500"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Archer: Sniper Arrow2
+	//=================================================================================================================
+	"archer_sniper_arrow2"
+	{
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle_folder"			"particles/arrow"
+            "soundfile"					"soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+		}
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"			"mirana_arrow"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"LevelsBetweenUpgrades"     	"3"
+		"RequiredLevel"         		"2"
+		"MaxLevel"						"3"
+ 
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"9999"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/Heroes/arrow.lua"
+				"Function"				"normalArrow"
+				"Target"				"POINT"
+				"MoveSpeed"				"%arrow_speed"
+				"FixedDistance"			"%range"
+				"StartRadius"			"%arrow_width"
+				"EndRadius"				"%arrow_width"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Ability.Powershot"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"				"false"
+			"RunScript"
+			{
+				"ScriptFile"        	"scripts/vscripts/Heroes/arrow.lua"
+				"Function"          	"arrowHit"
+				"Target"				"TARGET"
+				"Damage"				"%damage"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Windrunner.PowershotDamage"
+			}
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"2.5 2.0 1.5"
+ 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+ 
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"arrow_width"			"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"arrow_speed"			"1100.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"200 300 400"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"2000 2750 3500"
+			}
+		}
+	}
+}

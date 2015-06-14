@@ -1,0 +1,77 @@
+"dota_shops"
+{
+	"consumables"
+	{
+		"item"			"item_ward"
+	}
+
+	"attributes"
+	{
+		"item"			"item_sac_gem"
+		"item"			"item_swap_gem"
+		"item"			"item_burst_gem"
+		"item"			"item_pull_gem"
+		"item"			"item_vision_gem"
+	}
+
+	"weapons_armor"
+	{
+		"item"			"item_reinforced_arrows"
+		"item"			"item_lifesteal_mask"
+		"item"			"item_mm_luck"
+		"item"			"item_dual_arrows"
+		"item"			"item_mana_steal"
+		"item"			"item_astral_compass"
+	}
+			
+	"misc"
+	{
+		"item"			"item_elven_boots"
+		"item"			"item_eagle_eye"
+	}	
+	
+	// Level 1 - Green Recipes
+	"basics"
+	{			
+		"item"			"item_wov"
+		"item"			"item_enchanted_boots"
+	}
+
+	// Level 2 - Blue Recipes
+	"support"
+	{
+	}
+				
+	"magics"			
+	{
+	}
+		
+	// Level 3 - Purple Recipes	
+	"defense"
+	{
+	}
+			
+	"weapons"
+	{
+	}
+		
+	// Level 4 - Orange / Orb / Artifacts				
+	"artifacts"
+	{
+		"item"			"item_fire_arrows"
+		"item"			"item_frost_arrows"
+		"item"			"item_lightning_arrows"
+	}
+
+	"sideshop1"
+	{
+	}
+
+	"sideshop2"
+	{
+	}
+	
+	"secretshop"
+	{							
+	}	
+}

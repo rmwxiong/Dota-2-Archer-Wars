@@ -1,0 +1,8 @@
+archer_wars
+{
+	material materials/overviews/archer_wars.vmat
+	pos_x -4544
+	pos_y 4544
+	scale 8.875
+}
+
