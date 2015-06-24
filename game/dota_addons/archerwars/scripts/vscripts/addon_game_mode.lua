@@ -8,7 +8,7 @@ require('itemabilities')
 -- Load Stat collection (statcollection should be available from any script scope)
 require('lib.statcollection')
 statcollection.addStats({
-	modID = 'cc535d721531d6e5aeaf3663bcc0baf4' --GET THIS FROM http://getdotastats.com/#d2mods__my_mods
+	modID = '' --GET THIS FROM http://getdotastats.com/#d2mods__my_mods
 })
 
 function Precache( context )
